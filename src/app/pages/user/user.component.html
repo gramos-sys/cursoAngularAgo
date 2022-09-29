@@ -1,0 +1,36 @@
+<!--
+<mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.id}} {{user.first_name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.first_name}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['id','name']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['id','name'];"></mat-row>
+</mat-table>
+-->
+<app-user-table  [dataUser] = "users" (sendUserFromChild)="getUser($event)"></app-user-table>
+
+<div>
+
+    <mat-paginator
+        [length]="totalResgistros"
+        [pageSize]="totalPorPagina"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="paginar($event)"
+        showFirstLastButtons
+        >
+    </mat-paginator>
+
+</div>
+
+<div class="list-group" *ngIf="user">
+    <a href="#" class="list-group-item list-group-item-action active" > Usuario Selecionado </a>
+    <a href="#" class="list-group-item list-group-item-action"> Nombre {{user.first_name}} </a>
+    <a href="#" class="list-group-item list-group-item-action"> Apellidos {{user.last_name}}</a>
+</div>

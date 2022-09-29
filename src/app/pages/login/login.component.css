@@ -1,0 +1,15 @@
+.container {
+    width: 40%;
+    background: rgba(255, 255, 255, 0.788);
+}
+
+.bg-login {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(20, 176, 217, 1) 49%, rgba(0, 0, 0, 1) 100%);
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+      width: 80%;
+    }
+  }

@@ -1,0 +1,49 @@
+<form [formGroup]="formlogin">
+    <!-- <img src="../../../assets/img/Costco-Logo.png" width="100%"> -->
+    <div class="d-flex flex-column align-items-center w-100 ">
+        <div class="w-75">
+            <mat-form-field class="w-100 " appearance="outline">
+                <mat-label>Usuario</mat-label>
+                <input matInput type="text" formControlName="userName" name="userName" id="userName"  required minlength="4" maxlength="20" >
+                <div *ngIf="formlogin.get('userName')?.invalid && formlogin.get('userName')?.errors && (formlogin.get('userName')?.dirty || formlogin.get('userName')?.touched)">
+                    <!-- <small class="text-danger" *ngIf="formlogin.get('userName')?.hasError('email')">
+                        Formato incorrecto.
+                    </small> -->
+                    <small class="text-danger" *ngIf="formlogin.get('userName')?.hasError('required')">
+                        El campo es requerido.
+                    </small>
+                    <small class="text-danger" *ngIf="formlogin.get('userName')?.hasError('minlength')">
+                        El tamaño minimo del campo es de 4 caracteres.
+                    </small>
+                    <small class="text-danger" *ngIf="formlogin.get('userName')?.hasError('maxlength')">
+                        El tamaño maximo del campo es de 20 caracteres.
+                    </small>
+                </div>
+            </mat-form-field>
+        </div>
+        <div class="w-75">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" formControlName="password" name="password" id="pass" minlength="8" required>
+                <div *ngIf="formlogin.get('password')?.invalid && formlogin.get('password')?.errors && (formlogin.get('password')?.dirty || formlogin.get('password')?.touched)">
+                    <small class="text-danger" *ngIf="formlogin.get('password')?.hasError('required')">
+                        El campo es requerido
+                    </small>
+                    <small class="text-danger" *ngIf="formlogin.get('password')?.hasError('minlength')">
+                        El tamaño minimo del campo es de 8 carcteres.
+                    </small>
+                </div>
+            </mat-form-field>
+        </div>
+        
+        
+    </div>
+    <div class="d-flex justify-content-center">
+        <button mat-raised-button color="accent" (click)="submit()" [disabled]="!formlogin.valid">Entrar</button>  
+    </div>
+    <div class="margin-20">
+        <a href="#" routerLinkActive="router-link-active" >
+            <span>Olvidaste tu contraseña?</span>
+        </a>
+    </div> 
+</form>

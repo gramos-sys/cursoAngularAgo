@@ -1,0 +1,56 @@
+<div class="container-fluid h-100 d-flex flex-column justify-content-center">
+    <mat-card>
+        <mat-card-header class="justify-content-center">
+            <mat-card-title>Agregar nuevo transportista</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form  [formGroup]="formCarrier" (ngSubmit)="onSubmit()">
+
+                <div class="d-flex flex-column align-items-center w-100">
+                    <div class="w-75">
+                        <mat-form-field class="w-100" appearance="outline">
+                            <mat-label>Nombre</mat-label>
+                            <input matInput placeholder="name" type="text" name="name" formControlName="name">
+                            <div
+                                *ngIf="formCarrier.get('name')?.invalid && formCarrier.get('name')?.errors && (formCarrier.get('name')?.dirty || formCarrier.get('name')?.touched)">
+                                <small class="text-danger" *ngIf="formCarrier.get('name')?.hasError('required')">
+                                    El campo es requerido.
+                                </small>
+                                <small class="text-danger" *ngIf="formCarrier.get('name')?.hasError('minlength')">
+                                    El tamaño minimo del campo es de 4 caracteres.
+                                </small>
+                                <small class="text-danger" *ngIf="formCarrier.get('name')?.hasError('maxlength')">
+                                    El tamaño maximo del campo es de 20 caracteres.
+                                </small>
+                            </div>
+                        </mat-form-field>
+                    </div>
+                    <div class="w-75">
+                        <mat-form-field class="w-100" appearance="outline">
+                            <mat-label>Apellidos</mat-label>
+                            <input matInput placeholder="lastName" type="text" name="lastName" formControlName="lastName">
+                            <div
+                                *ngIf="formCarrier.get('lastName')?.invalid && formCarrier.get('lastName')?.errors && (formCarrier.get('lastName')?.dirty || formCarrier.get('lastName')?.touched)">
+                                <small class="text-danger" *ngIf="formCarrier.get('lastName')?.hasError('required')">
+                                    El campo es requerido.
+                                </small>
+                                <small class="text-danger" *ngIf="formCarrier.get('lastName')?.hasError('minlength')">
+                                    El tamaño minimo del campo es de 4 caracteres.
+                                </small>
+                                <small class="text-danger" *ngIf="formCarrier.get('lastName')?.hasError('maxlength')">
+                                    El tamaño maximo del campo es de 30 caracteres.
+                                </small>
+                            </div>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <button mat-raised-button class="bg-btnAdd" type="submit" [disabled]="!formCarrier.valid">Agregar</button>
+                <!-- [disabled]="!formCarrier.valid" -->
+            </form>
+            
+        </mat-card-content>
+        <mat-card-actions class="d-flex justify-content-center">
+            
+        </mat-card-actions>
+    </mat-card>
+</div>

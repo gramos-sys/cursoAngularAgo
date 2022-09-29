@@ -1,0 +1,24 @@
+<mat-table #table [dataSource]="dataUser">
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.id}} {{user.first_name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.first_name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="send">
+        <mat-header-cell *matHeaderCellDef> Enviar </mat-header-cell>
+        <mat-cell *matCellDef="let user">
+            <button mat-raised-button color="accent" (click)="sendUser(user);"> Seleccionar </button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="userColumn"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: userColumn;"></mat-row>
+
+   <!--<mat-header-row *matHeaderRowDef="['id','name','enviar']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['id','name','enviar'];"></mat-row>-->
+</mat-table>
